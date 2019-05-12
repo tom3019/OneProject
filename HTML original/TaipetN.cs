@@ -26,8 +26,7 @@ namespace HTML_original
                 if (Nresponse.StatusCode == HttpStatusCode.OK)
                 {
                     Stream receiveStream = Nresponse.GetResponseStream();
-                    StreamReader readStream = null;
-
+                    StreamReader readStream;
                     if (Nresponse.CharacterSet == null)
                     {
                         readStream = new StreamReader(receiveStream);
@@ -36,13 +35,14 @@ namespace HTML_original
                     {
                         readStream = new StreamReader(receiveStream, Encoding.GetEncoding(Nresponse.CharacterSet));
                     }
-
-                    string data = readStream.ReadToEnd();
+                    
+                     string data = readStream.ReadToEnd().Replace("，", Environment.NewLine);
+              
                     //==========================================================
 
-                    //===========================HtmlAgilityPack============
+                     //===========================HtmlAgilityPack============
 
-                    HtmlDocument doc = new HtmlDocument();
+                HtmlDocument doc = new HtmlDocument();
                     doc.LoadHtml(data);
 
                     //輸出成txt
@@ -51,7 +51,7 @@ namespace HTML_original
                 string dirPath = $@"{AppDomain.CurrentDomain.BaseDirectory}\北市區";
                 if (Directory.Exists(dirPath))
                 {
-                    Console.WriteLine("The directory {0} already exists.", dirPath);
+                    Console.WriteLine("success");
                 }
                 else
                 {
@@ -60,28 +60,29 @@ namespace HTML_original
                 }
 
                 StreamWriter str = new StreamWriter($@"{AppDomain.CurrentDomain.BaseDirectory}\北市區\{Sameday}-北市區.txt");
-                    // str.WriteLine(data);
-
-                    foreach (HtmlNode table in doc.DocumentNode.SelectNodes("//table"))
+                // str.WriteLine(data);
+                
+                foreach (HtmlNode table in doc.DocumentNode.SelectNodes("//table"))
                     {
                         str.WriteLine("日期:" + table.Id);
                         //Console.WriteLine("Date:" + table.Id);
                         foreach (HtmlNode row in table.SelectNodes("tr"))
                         {
 
-                            str.WriteLine("row");
+                            str.WriteLine();
                             //Console.WriteLine("row");
                             foreach (HtmlNode cell in row.SelectNodes("th|td"))
                             {
-
-                                str.WriteLine("cell:" + cell.InnerText);
+                            //cell.InnerText.Replace("，|,", Environment.NewLine);
+                            //cell.InnerText.Replace("，|,", str.NewLine);
+                            str.WriteLine( cell.InnerText);
                                 // Console.WriteLine("cell:" + cell.InnerText);
                             }
                         }
                     }
-
-                    //===========================HtmlAgilityPack============
+                //===========================HtmlAgilityPack============
                     str.Close();
+                
                     Nresponse.Close();
                     readStream.Close();
                     //  Console.ReadLine();

@@ -46,16 +46,15 @@ namespace HTML_original
 
                 int ttd = line.IndexOf(day);//文本搜尋今天
                 int td = line.IndexOf("日期");
-                int time = line.IndexOf("cell:自");
-                int comma = line.IndexOf("，");
+                int time = line.IndexOf("自");
+                
                 int r = line.IndexOf(t);
                 
                 if (ttd != -1)           //當搜尋到今天日期 count=1
                 {
                     count = 1;
                 }
-                else if (dayd!=-1)
-                    
+                else                
                 {
                     count = 0;
                 }
@@ -236,7 +235,6 @@ namespace HTML_original
             str.Close();
             
         }
-
 
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace HTML_original
+﻿using System;
+
+namespace HTML_original
 {
     partial class TDsearch
     {
@@ -28,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TDsearch));
             this.button2 = new System.Windows.Forms.Button();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -65,17 +68,23 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.button2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TDsearch";
+            this.Text = "計畫性停電查詢";
             this.Load += new System.EventHandler(this.TDsearch_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
+        private void TDsearch_Load(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.TextBox textBox1;

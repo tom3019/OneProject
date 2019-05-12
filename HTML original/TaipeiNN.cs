@@ -23,7 +23,8 @@ namespace HTML_original
             if (NNresponse.StatusCode == HttpStatusCode.OK)
             {
                 Stream receiveStream = NNresponse.GetResponseStream();
-                StreamReader readStream;
+                StreamReader readStream = null;
+
                 if (NNresponse.CharacterSet == null)
                 {
                     readStream = new StreamReader(receiveStream);
@@ -33,7 +34,7 @@ namespace HTML_original
                     readStream = new StreamReader(receiveStream, Encoding.GetEncoding(NNresponse.CharacterSet));
                 }
 
-                string data = readStream.ReadToEnd();
+                string data = readStream.ReadToEnd().Replace("，", Environment.NewLine);
                 //==========================================================
 
                 //===========================HtmlAgilityPack============
@@ -47,7 +48,7 @@ namespace HTML_original
                 string dirPath = $@"{AppDomain.CurrentDomain.BaseDirectory}\北北區";
                 if (Directory.Exists(dirPath))
                 {
-                    Console.WriteLine("The directory {0} already exists.", dirPath);
+                    Console.WriteLine("success");
                 }
                 else
                 {
