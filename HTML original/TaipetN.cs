@@ -82,7 +82,7 @@ namespace HTML_original
                     }
                 //===========================HtmlAgilityPack============
                     str.Close();
-                
+                 
                     Nresponse.Close();
                     readStream.Close();
                     //  Console.ReadLine();
