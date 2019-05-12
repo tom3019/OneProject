@@ -67,12 +67,12 @@ namespace HTML_original
                     foreach (HtmlNode row in table.SelectNodes("tr"))
                     {
 
-                        str.WriteLine("row");
+                        str.WriteLine();
                         //Console.WriteLine("row");
                         foreach (HtmlNode cell in row.SelectNodes("th|td"))
                         {
 
-                            str.WriteLine("cell:" + cell.InnerText);
+                            str.WriteLine( cell.InnerText);
                             // Console.WriteLine("cell:" + cell.InnerText);
                         }
                     }
