@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,8 +32,8 @@ namespace HTML_original
             string line,NNline,NSline,NWline ;
 
 
-            string t = textBox1.Text.ToString();
-
+            //string t = textBox1.Text.ToString();
+            string t = Strings.StrConv(textBox1.Text.ToString(), VbStrConv.Wide);
             int count=0;
             DateTime yday = d.AddDays(1);//明天
             string yyday = yday.ToString("yyyyMMdd");   //明天轉字串
