@@ -62,7 +62,7 @@ namespace HTML_original
 
                 foreach (HtmlNode table in doc.DocumentNode.SelectNodes("//table"))
                 {
-                    str.WriteLine("日期:" + table.Id);
+                    str.WriteLine("(北南區)日期:" + table.Id);
                     //Console.WriteLine("Date:" + table.Id);
                     foreach (HtmlNode row in table.SelectNodes("tr"))
                     {

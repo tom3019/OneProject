@@ -54,7 +54,7 @@ namespace HTML_original
                 else
                 {
                     Directory.CreateDirectory(dirPath);
-                    Console.WriteLine("The directory was created.", dirPath);
+                    Console.WriteLine("The directory  {0} was created.", dirPath);
                 }
 
 
@@ -64,7 +64,7 @@ namespace HTML_original
 
                 foreach (HtmlNode table in doc.DocumentNode.SelectNodes("//table"))
                 {
-                    str.WriteLine("日期:" + table.Id);
+                    str.WriteLine("(北西區)日期:" + table.Id);
                     //Console.WriteLine("Date:" + table.Id);
                     foreach (HtmlNode row in table.SelectNodes("tr"))
                     {
