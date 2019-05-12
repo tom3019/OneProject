@@ -54,7 +54,7 @@ namespace HTML_original
                 else
                 {
                     Directory.CreateDirectory(dirPath);
-                    Console.WriteLine("The directory  {0} was created.", dirPath);
+                    Console.WriteLine("The directory {0} was created.", dirPath);
                 }
 
 
