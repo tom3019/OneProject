@@ -47,7 +47,7 @@ namespace HTML_original
 
                 int ttd = line.IndexOf(day);//文本搜尋今天
                 int td = line.IndexOf("日期");
-                int time = line.IndexOf("自");
+                int time = line.IndexOf("至");
                 
                 int r = line.IndexOf(t);
                 
@@ -55,7 +55,7 @@ namespace HTML_original
                 {
                     count = 1;
                 }
-                else                
+                else if (dayd != -1)
                 {
                     count = 0;
                 }
@@ -96,8 +96,8 @@ namespace HTML_original
 
                 int ttd = NNline.IndexOf(day);//文本搜尋今天
                 int td = NNline.IndexOf("日期");
-                int time = NNline.IndexOf("cell:自");
-                int comma = NNline.IndexOf("，");
+                int time = NNline.IndexOf("自");
+              
                 int r = NNline.IndexOf(t);
 
                 if (ttd != -1)           //當搜尋到今天日期 count=1
@@ -145,8 +145,8 @@ namespace HTML_original
 
                 int ttd = NSline.IndexOf(day);//文本搜尋今天
                 int td = NSline.IndexOf("日期");
-                int time = NSline.IndexOf("cell:自");
-                int comma = NSline.IndexOf("，");
+                int time = NSline.IndexOf("自");
+          
                 int r = NSline.IndexOf(t);
 
                 if (ttd != -1)           //當搜尋到今天日期 count=1
@@ -194,8 +194,8 @@ namespace HTML_original
 
                 int ttd = NWline.IndexOf(day);//文本搜尋今天
                 int td = NWline.IndexOf("日期");
-                int time = NWline.IndexOf("cell:自");
-                int comma = NWline.IndexOf("，");
+                int time = NWline.IndexOf("自");
+            
                 int r = NWline.IndexOf(t);
 
                 if (ttd != -1)           //當搜尋到今天日期 count=1
