@@ -47,7 +47,7 @@ namespace HTML_original
 
                 int ttd = line.IndexOf(day);//文本搜尋今天
                 int td = line.IndexOf("日期");
-                int time = line.IndexOf("至");
+                int time = line.IndexOf("自");
                 
                 int r = line.IndexOf(t);
                 
