@@ -66,8 +66,15 @@ namespace HTML_original
                             {                                             //輸出
                                                                           // Console.WriteLine(line);
 
-                                richTextBox2.Text += $@"{line}" + Environment.NewLine+"\n";
+                                if (time!=-1)
+                                {
 
+                                    richTextBox2.Text += $"\n{line}"+ Environment.NewLine;
+                                }
+                                else
+                                {
+                                    richTextBox2.Text += $"{line}" + Environment.NewLine;
+                                }
                                 //if (comma!=-1)
                                 //{
                                 //    richTextBox2.Text += Environment.NewLine;
