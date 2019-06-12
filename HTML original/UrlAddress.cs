@@ -60,7 +60,7 @@ namespace HTML_original
 
                 foreach (HtmlNode table in Doc.DocumentNode.SelectNodes("//table"))
                 {
-                    str.WriteLine($@"({Area})日期:" + table.Id);
+                    str.WriteLine($@"({Area})日期:" + table.Id+"\n");
                     //Console.WriteLine("Date:" + table.Id);
                     foreach (HtmlNode row in table.SelectNodes("tr"))
                     {
