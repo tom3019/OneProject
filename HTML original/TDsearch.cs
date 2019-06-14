@@ -33,9 +33,11 @@ namespace HTML_original
             string yyday = yday.ToString("yyyyMMdd");   //明天轉字串
             string day = d.ToString("yyyyMMdd");    //今天轉字串
             string line ;
-            ArrayList text = new ArrayList();
+            string[] SecrH = new string[500];
             string[] text1 = new string[5000];
-            int num = 1;
+            int num = 0;
+            int Dnum = 0;
+            int cos = 0;
             text1[0] = " ";
             string Sameday = d.GetDateTimeFormats('D')[1].ToString();
             foreach (var item in area)
@@ -50,49 +52,61 @@ namespace HTML_original
                      text1[num] = line;
 
                     
-                    int dayd = line.IndexOf(yyday); // 文本中搜尋明天
+                        int dayd = line.IndexOf(yyday); // 文本中搜尋明天
+                  
+                        int ttd = line.IndexOf(day);//文本搜尋今天
+                        int td = line.IndexOf("日期");
+                        int time = line.IndexOf("分 至");
+                  
+                        int r = line.IndexOf(t);
+                  
+                  
+                        if (ttd != -1)           //當搜尋到今天日期 count=1
+                        {
+                            count = 1;
+                        }
+                        else if (dayd != -1)
+                        {
+                            count = 0;
+                        }
+                        // Console.WriteLine(line);
 
-                    int ttd = line.IndexOf(day);//文本搜尋今天
-                    int td = line.IndexOf("日期");
-                    int time = line.IndexOf("分 至");
+                        if (time != -1)
+                        {
+                            SecrH[Dnum] = text1[num];
+                            Dnum++;
+                            cos = 1;
+                        }
 
-                    int r = line.IndexOf(t);
-
-                    if (ttd != -1)           //當搜尋到今天日期 count=1
-                    {
-                        count = 1;
-                    }
-                    else if (dayd != -1)
-                    {
-                        count = 0;
-                    }
-                    // Console.WriteLine(line);
-
-                    switch (count)
-                    {
-                        case 1:
-                            if (td != -1 || r != -1 )  //當搜尋到"日期"  "文字格中的字串" "自"  和count=1
+                        switch (count)
+                        {
+                         case 1:
+                            if (td != -1 || r != -1)  //當搜尋到"日期"  "文字格中的字串" "自"  和count=1
                             {                                             //輸出
 
 
-                                    //richTextBox2.Text += $"{text1[num]}" + Environment.NewLine; 顯示區域
-                                    if (r!=-1)
-                                    {
 
-                                        richTextBox2.Text += $"{text1[num - 1]}" + Environment.NewLine;
+                                    //richTextBox2.Text += $"{text1[num]}" + Environment.NewLine; 顯示區域
+                                    if (cos==1)
+                                    {
+                                    richTextBox2.Text += $"{SecrH[Dnum-1]}" + Environment.NewLine;
+
                                     }
+                                    
+                                    richTextBox2.Text += $"{text1[num]}" + Environment.NewLine;
+                                    
                                                            
-                               
+                               cos=0;
                             }
 
                             break;
-                        default:
+                         default:
                             break;
-                    }
+                        }
 
                         num++;
                     }
-
+                    
                 }
             str.Close();
             }
@@ -104,5 +118,10 @@ namespace HTML_original
             
         }
 
+        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            UrlAddress urlAddress = new UrlAddress();
+            //urlAddress.Sw(true);
+        }
     }
 }

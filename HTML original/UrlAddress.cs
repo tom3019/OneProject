@@ -13,6 +13,11 @@ namespace HTML_original
     {
         private string Url { get; set; }
         private string Area { get; set; }
+        //private bool SW { get; set; }
+        //public void Sw(bool sw)
+        //{
+        //    SW = sw;
+        //}
         public void Urladdress(string urlAddress)
         {
             Url = urlAddress;
@@ -42,44 +47,51 @@ namespace HTML_original
 
                 HtmlDocument Doc = new HtmlDocument();
                 Doc.LoadHtml(Data);
-                DateTime d = DateTime.Now;
-                string Sameday = d.GetDateTimeFormats('D')[1].ToString();
-                string dirPath = $@"{AppDomain.CurrentDomain.BaseDirectory}\{Area}";
-                if (Directory.Exists(dirPath))
-                {
-                    Console.WriteLine("success");
-                }
-                else
-                {
-                    Directory.CreateDirectory(dirPath);
-                    Console.WriteLine("The directory {0} was created.", dirPath);
-                }
 
-                StreamWriter str = new StreamWriter($@"{AppDomain.CurrentDomain.BaseDirectory}\{Area}\{Sameday}-{Area}.txt");
-                // str.WriteLine(data);
 
-                foreach (HtmlNode table in Doc.DocumentNode.SelectNodes("//table"))
-                {
-                    str.WriteLine($"\n({Area})日期:" + table.Id+"\n");
-                    //Console.WriteLine("Date:" + table.Id);
-                    foreach (HtmlNode row in table.SelectNodes("tr"))
+
+              //  if (SW == true)
+               // {
+
+
+                    DateTime d = DateTime.Now;
+                    string Sameday = d.GetDateTimeFormats('D')[1].ToString();
+                    string dirPath = $@"{AppDomain.CurrentDomain.BaseDirectory}\{Area}";
+                    if (Directory.Exists(dirPath))
                     {
+                        Console.WriteLine("success");
+                    }
+                    else
+                    {
+                        Directory.CreateDirectory(dirPath);
+                        Console.WriteLine("The directory {0} was created.", dirPath);
+                    }
 
-                        str.WriteLine();
-                        //Console.WriteLine("row");
-                        foreach (HtmlNode cell in row.SelectNodes("th|td"))
+                    StreamWriter str = new StreamWriter($@"{AppDomain.CurrentDomain.BaseDirectory}\{Area}\{Sameday}-{Area}.txt");
+                    // str.WriteLine(data);
+
+                    foreach (HtmlNode table in Doc.DocumentNode.SelectNodes("//table"))
+                    {
+                        str.WriteLine($"\n({Area})日期:" + table.Id + "\n");
+                        //Console.WriteLine("Date:" + table.Id);
+                        foreach (HtmlNode row in table.SelectNodes("tr"))
                         {
 
-                            str.WriteLine(cell.InnerText);
-                            // Console.WriteLine("cell:" + cell.InnerText);
+                            str.WriteLine();
+                            //Console.WriteLine("row");
+                            foreach (HtmlNode cell in row.SelectNodes("th|td"))
+                            {
+
+                                str.WriteLine(cell.InnerText);
+                                // Console.WriteLine("cell:" + cell.InnerText);
+                            }
                         }
                     }
-                }
 
+                     str.Close();
 
+                //}
 
-
-             str.Close();
              ReadStream.Close();
             }
             
