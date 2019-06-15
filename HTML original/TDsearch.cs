@@ -56,7 +56,7 @@ namespace HTML_original
                         int dayd = line.IndexOf(yyday); // 文本中搜尋明天
                   
                         int ttd = line.IndexOf(day);//文本搜尋今天
-                        int td = line.IndexOf("日期");
+                        int td = line.IndexOf("日期:");
                         int time = line.IndexOf("分 至");
                   
                         int r = line.IndexOf(t);
@@ -72,7 +72,7 @@ namespace HTML_original
                                 Tcos = 1;
                             }
                         }
-                        else if (dayd != -1)
+                        else if (td != -1)
                         {
                             count = 0;
                         }
