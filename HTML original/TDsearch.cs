@@ -38,6 +38,7 @@ namespace HTML_original
             int num = 0;
             int Dnum = 0;
             int cos = 0;
+            int Tcos = 0;
             text1[0] = " ";
             string Sameday = d.GetDateTimeFormats('D')[1].ToString();
             foreach (var item in area)
@@ -64,6 +65,12 @@ namespace HTML_original
                         if (ttd != -1)           //當搜尋到今天日期 count=1
                         {
                             count = 1;
+                            //richTextBox2.Text += $"{text1[num]}" + Environment.NewLine;
+                            if (Tcos==0)
+                            {
+                               richTextBox2.Text += $"{DateTime.Now.ToString("yyyy/MM/dd")}" + Environment.NewLine;
+                                Tcos = 1;
+                            }
                         }
                         else if (dayd != -1)
                         {
@@ -78,10 +85,11 @@ namespace HTML_original
                             cos = 1;
                         }
 
+
                         switch (count)
                         {
                          case 1:
-                            if (td != -1 || r != -1)  //當搜尋到"日期"  "文字格中的字串" "自"  和count=1
+                            if ( r != -1)  //當搜尋到"日期"  "文字格中的字串" "自"  和count=1
                             {                                             //輸出
 
 
@@ -89,7 +97,10 @@ namespace HTML_original
                                     //richTextBox2.Text += $"{text1[num]}" + Environment.NewLine; 顯示區域
                                     if (cos==1)
                                     {
-                                    richTextBox2.Text += $"{SecrH[Dnum-1]}" + Environment.NewLine;
+                                    richTextBox2.Text += $"===============================" +
+                                            $"============================================" +
+                                            $"============================================" +
+                                            $"\n{SecrH[Dnum-1]}" + Environment.NewLine;
 
                                     }
                                     
