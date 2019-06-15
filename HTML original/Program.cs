@@ -28,6 +28,7 @@ namespace HTML_original
             N.Html_Original();
 
 
+
             UrlAddress NN = new UrlAddress();
             NN.Urladdress("https://branch.taipower.com.tw/Content/NoticeBlackout/bulletin.aspx?&SiteID=564732636524040174&MmmID=616371300130136031");
             NN.area("北北區");
