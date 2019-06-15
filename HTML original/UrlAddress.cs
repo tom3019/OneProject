@@ -28,6 +28,8 @@ namespace HTML_original
         }
         public void Html_Original()
         {
+           //string[] DATA = new string[5000];
+           // int count = 0;
             HttpWebRequest Request = (HttpWebRequest)WebRequest.Create(Url);
             HttpWebResponse Response = (HttpWebResponse)Request.GetResponse();
             if (Response.StatusCode==HttpStatusCode.OK)
@@ -47,7 +49,7 @@ namespace HTML_original
 
                 HtmlDocument Doc = new HtmlDocument();
                 Doc.LoadHtml(Data);
-
+                
 
 
               //  if (SW == true)
@@ -73,17 +75,23 @@ namespace HTML_original
                     foreach (HtmlNode table in Doc.DocumentNode.SelectNodes("//table"))
                     {
                         str.WriteLine($"\n({Area})日期:" + table.Id + "\n");
+                        //DATA[count] = $"\n({Area})日期:" + table.Id + "\n";
+                        //count++;
                         //Console.WriteLine("Date:" + table.Id);
                         foreach (HtmlNode row in table.SelectNodes("tr"))
                         {
 
                             str.WriteLine();
+                            //DATA[count] = $"\n";
+                            //count++;
                             //Console.WriteLine("row");
                             foreach (HtmlNode cell in row.SelectNodes("th|td"))
                             {
 
                                 str.WriteLine(cell.InnerText);
-                                // Console.WriteLine("cell:" + cell.InnerText);
+                                //DATA[count] = $"\n" + cell.InnerText + "\n";
+                                //count++;
+                               // Console.WriteLine("cell:" + cell.InnerText);
                             }
                         }
                     }
