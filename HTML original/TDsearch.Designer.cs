@@ -38,7 +38,7 @@ namespace HTML_original
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(384, 28);
+            this.button2.Location = new System.Drawing.Point(387, 41);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 0;
@@ -48,7 +48,7 @@ namespace HTML_original
             // 
             // richTextBox2
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(29, 109);
+            this.richTextBox2.Location = new System.Drawing.Point(29, 105);
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.ReadOnly = true;
             this.richTextBox2.Size = new System.Drawing.Size(823, 327);
@@ -57,13 +57,14 @@ namespace HTML_original
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(29, 28);
+            this.textBox1.Location = new System.Drawing.Point(29, 41);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(336, 22);
             this.textBox1.TabIndex = 2;
             // 
             // TDsearch
             // 
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(895, 468);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.richTextBox2);
