@@ -43,96 +43,108 @@ namespace HTML_original
             string Sameday = d.GetDateTimeFormats('D')[1].ToString();
             foreach (var item in area)
             {
-              StreamReader str = new StreamReader($@"{AppDomain.CurrentDomain.BaseDirectory}\{item}\{Sameday}-{item}.txt");
-                while ((line = str.ReadLine()) != null)
+
+                try
                 {
-                    //  Console.WriteLine(line);
-                    //text.Add(line);
-                    if (num == 0 ||num < 5000)
+
+                    StreamReader str = new StreamReader($@"{AppDomain.CurrentDomain.BaseDirectory}\{item}\{Sameday}-{item}.txt");
+                    while ((line = str.ReadLine()) != null)
                     {
-                     text1[num] = line;
-
-                    
-                        int dayd = line.IndexOf(yyday); // 文本中搜尋明天
-                  
-                        int ttd = line.IndexOf(day);//文本搜尋今天
-                        int td = line.IndexOf("日期:");
-                        int time = line.IndexOf("分 至");
-                  
-                        int r = line.IndexOf(t);
-                  
-                  
-                        if (ttd != -1)           //當搜尋到今天日期 count=1
+                        //  Console.WriteLine(line);
+                        //text.Add(line);
+                        if (num == 0 || num < 5000)
                         {
-                            count = 1;
-                            //richTextBox2.Text += $"{text1[num]}" + Environment.NewLine;
-                            if (Tcos==0)
+                            text1[num] = line;
+
+
+                            int dayd = line.IndexOf(yyday); // 文本中搜尋明天
+
+                            int ttd = line.IndexOf(day);//文本搜尋今天
+                            int td = line.IndexOf("日期:");
+                            int time = line.IndexOf("分 至");
+
+                            int r = line.IndexOf(t);
+
+
+                            if (ttd != -1)           //當搜尋到今天日期 count=1
                             {
-                               richTextBox2.Text += $"{DateTime.Now.ToString("yyyy/MM/dd")}" + Environment.NewLine;
-                                Tcos = 1;
+                                count = 1;
+                                //richTextBox2.Text += $"{text1[num]}" + Environment.NewLine;
+                                if (Tcos == 0)
+                                {
+                                    richTextBox2.Text += $"{DateTime.Now.ToString("yyyy/MM/dd")}" + Environment.NewLine;
+                                    Tcos = 1;
+                                }
                             }
-                        }
-                        else if (td != -1)
-                        {
-                            count = 0;
-                        }
-                        // Console.WriteLine(line);
+                            else if (td != -1)
+                            {
+                                count = 0;
+                            }
+                            // Console.WriteLine(line);
 
-                        if (time != -1)
-                        {
-                            SecrH[Dnum] = text1[num];
-                            Dnum++;
-                            cos = 1;
-                        }
-
-
-                        switch (count)
-                        {
-                         case 1:
-                            if ( r != -1)  //當搜尋到"日期"  "文字格中的字串" "自"  和count=1
-                            {                                             //輸出
+                            if (time != -1)
+                            {
+                                SecrH[Dnum] = text1[num];
+                                Dnum++;
+                                cos = 1;
+                            }
 
 
+                            switch (count)
+                            {
+                                case 1:
+                                    if (r != -1)  //當搜尋到"日期"  "文字格中的字串" "自"  和count=1
+                                    {                                             //輸出
 
-                                    //richTextBox2.Text += $"{text1[num]}" + Environment.NewLine; 顯示區域
-                                    if (cos==1)
-                                    {
-                                    richTextBox2.Text += $"===============================" +
-                                            $"============================================" +
-                                            $"============================================" +
-                                            $"\n{SecrH[Dnum-1]}" + Environment.NewLine;
 
+
+                                        //richTextBox2.Text += $"{text1[num]}" + Environment.NewLine; 顯示區域
+                                        if (cos == 1)
+                                        {
+                                            richTextBox2.Text += $"===============================" +
+                                                    $"============================================" +
+                                                    $"============================================" +
+                                                    $"\n{SecrH[Dnum - 1]}" + Environment.NewLine;
+
+                                        }
+
+                                        richTextBox2.Text += $"{text1[num]}" + Environment.NewLine;
+
+
+                                        cos = 0;
                                     }
-                                    
-                                    richTextBox2.Text += $"{text1[num]}" + Environment.NewLine;
-                                    
-                                                           
-                               cos=0;
+
+                                    break;
+                                default:
+                                    break;
                             }
 
-                            break;
-                         default:
-                            break;
+                            num++;
                         }
 
-                        num++;
                     }
+                    str.Close();
+
+                }
+                catch (System.IO.DirectoryNotFoundException)
+                {
+
+                    MessageBox.Show("請重新開啟程式");
                     
                 }
-            str.Close();
+                 
             }
 
+              
+        }
+
 
 
             
 
-            
-        }
-
-        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            UrlAddress urlAddress = new UrlAddress();
-            //urlAddress.Sw(true);
-        }
+           
     }
+
+
 }
+
