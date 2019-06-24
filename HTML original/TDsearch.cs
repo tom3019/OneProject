@@ -129,7 +129,7 @@ namespace HTML_original
                 catch (System.IO.DirectoryNotFoundException)
                 {
 
-                    MessageBox.Show("請重新開啟程式");
+                    MessageBox.Show("檔案遺失，請重新開啟程式");
                     
                 }
                  
