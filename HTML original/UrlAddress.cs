@@ -11,6 +11,7 @@ namespace HTML_original
 {
     class UrlAddress
     {
+        
         private string Url { get; set; }
         private string Area { get; set; }
         //private bool SW { get; set; }
@@ -18,6 +19,7 @@ namespace HTML_original
         //{
         //    SW = sw;
         //}
+        
         public void Urladdress(string urlAddress)
         {
             Url = urlAddress;
@@ -30,6 +32,7 @@ namespace HTML_original
         {
            //string[] DATA = new string[5000];
            // int count = 0;
+           
             HttpWebRequest Request = (HttpWebRequest)WebRequest.Create(Url);
             HttpWebResponse Response = (HttpWebResponse)Request.GetResponse();
             if (Response.StatusCode==HttpStatusCode.OK)
@@ -70,7 +73,9 @@ namespace HTML_original
                     }
 
                     StreamWriter str = new StreamWriter($@"{AppDomain.CurrentDomain.BaseDirectory}\{Area}\{Sameday}-{Area}.txt");
-                    // str.WriteLine(data);
+                // str.WriteLine(data);
+                if (Doc.DocumentNode.SelectNodes("//table")!=null)
+                {
 
                     foreach (HtmlNode table in Doc.DocumentNode.SelectNodes("//table"))
                     {
@@ -100,9 +105,10 @@ namespace HTML_original
 
                 //}
 
+                }
              ReadStream.Close();
             }
-            
+           
          Response.Close();
         }
 
