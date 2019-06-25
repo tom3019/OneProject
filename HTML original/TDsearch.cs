@@ -132,6 +132,14 @@ namespace HTML_original
                     MessageBox.Show("檔案遺失，程式將重啟");
                     Application.Restart();
                 }
+                catch(System.IO.FileNotFoundException)
+                {
+
+                    MessageBox.Show("檔案遺失，程式將重啟");
+                    Application.Restart();
+                }
+                
+
                  
             }
 
