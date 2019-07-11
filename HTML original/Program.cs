@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,9 +15,13 @@ namespace HTML_original
     
     class Program
     {
+       
         [STAThread]
+
         static void Main()
         {
+
+           
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -48,8 +53,8 @@ namespace HTML_original
 
 
 
-
             Application.Run(new TDsearch());
+
 
         }
     }

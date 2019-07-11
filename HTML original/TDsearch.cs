@@ -19,6 +19,14 @@ namespace HTML_original
         public TDsearch()
         {
             InitializeComponent();
+            if (System.Diagnostics.Process.GetProcessesByName(System.Diagnostics.Process.GetCurrentProcess().ProcessName).Length > 1)
+            {
+                //MessageBox.Show("应用程序只能打开一次");
+                Console.WriteLine("");
+                this.Close();
+            }
+
+
         }
         string[] area = { "北市區", "北北區", "北南區", "北西區" };
         
@@ -131,6 +139,7 @@ namespace HTML_original
 
                     MessageBox.Show("檔案遺失，程式將重啟");
                     Application.Restart();
+                    
                 }
                 catch(System.IO.FileNotFoundException)
                 {
